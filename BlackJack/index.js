@@ -1,45 +1,66 @@
-let firstCard = 7;
-let secondCard = 10;
-let sum = firstCard + secondCard;
-let cards = [firstCard, secondCard];
-
+let cards = [];
+let sum = 0;
+let hasBlackJack = false;
+let isAlive = false;
 let message = "";
+let player = {
+  name: "jasik",
+  chips: 32,
+};
+
+let messageEl = document.getElementById("message-el");
+let sumEl = document.getElementById("sum-el");
+let cardsEl = document.getElementById("cards-el");
+let playerEl = document.getElementById("player-el");
+
+playerEl.textContent = player.name + " : $" + player.chips;
+
+function getRandomCard() {
+  let randomNumber = Math.floor(Math.random() * 13) + 1;
+  if (randomNumber > 10) {
+    return 10;
+  } else if (randomNumber === 1) {
+    return 11;
+  } else {
+    return randomNumber;
+  }
+}
 
 function startGame() {
+  isAlive = true;
+  hasBlackJack = false;
+  let firstCard = getRandomCard();
+  let secondCard = getRandomCard();
+  cards = [firstCard, secondCard];
+  sum = firstCard + secondCard;
   renderGame();
 }
 
 function renderGame() {
-  const messageEl = document.getElementById("message-el");
-  const sumEl = document.getElementById("sum-el");
-  const cardEl = document.querySelector("#card-el");
-
-  cardEl.textContent = "Card :";
+  cardsEl.textContent = "Cards: ";
+  for (let i = 0; i < cards.length; i++) {
+    cardsEl.textContent += cards[i] + " ";
+  }
 
   sumEl.textContent = "Sum: " + sum;
 
-  for (let i = 0; i < cards.length; i++) {
-    cardEl.textContent += cards[i] + " ";
-  }
-
   if (sum <= 20) {
-    message = "You still have a move";
+    message = "Do you want to draw a new card?";
   } else if (sum === 21) {
-    message = "You win!";
+    message = "You've got Blackjack!";
     hasBlackJack = true;
   } else {
-    message = "You lose!";
+    message = "You're out of the game!";
     isAlive = false;
   }
-
   messageEl.textContent = message;
 }
 
 function newCard() {
-  let card = 4;
-
-  cards.push(card);
-  sum = sum + card;
-  console.log(cards);
-  renderGame();
+  if (isAlive && !hasBlackJack) {
+    let card = getRandomCard();
+    sum += card;
+    cards.push(card);
+    renderGame();
+  }
 }
