@@ -4,16 +4,14 @@ let hasBlackJack = false;
 let isAlive = false;
 let message = "";
 let player = {
-  name: "jasik",
-  chips: 32,
+  name: "Player",
+  chips: 20,
 };
 
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 let playerEl = document.getElementById("player-el");
-
-playerEl.textContent = player.name + " : $" + player.chips;
 
 function getRandomCard() {
   let randomNumber = Math.floor(Math.random() * 13) + 1;
@@ -46,19 +44,26 @@ function renderGame() {
 
   if (sum <= 20) {
     message = "Do you want to draw a new card?";
+    messageEl.style.color = "white";
   } else if (sum === 21) {
-    message = "You've got Blackjack!";
+    message = "You've got Blackjack! You did win $ 10";
     hasBlackJack = true;
+    player.chips += 10;
+    messageEl.style.color = "blue";
   } else {
-    message = "You're out of the game!";
+    message = "You're out of the game! you did lose $ 3";
     isAlive = false;
+    player.chips -= 3;
+    messageEl.style.color = "red";
   }
   messageEl.textContent = message;
+  playerEl.textContent = player.name + " : $" + player.chips;
 }
 
 function newCard() {
   if (isAlive && !hasBlackJack) {
     let card = getRandomCard();
+
     sum += card;
     cards.push(card);
     renderGame();
