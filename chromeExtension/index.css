@@ -21,6 +21,8 @@ div {
   align-items: center;
   background-color: rgb(222, 43, 43);
   width: 90%;
+  max-width: 500px;
+  height: 90%;
 }
 
 input {
