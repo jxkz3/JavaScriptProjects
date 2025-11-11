@@ -3,12 +3,28 @@ const leadsEl = document.getElementById("leads-el");
 const inputBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const clearBtn = document.getElementById("clear-btn");
+const tabBtn = document.getElementById("tab-btn");
 
 let leadsLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 if (leadsLocalStorage) {
   myLeads = leadsLocalStorage;
-  renderLeads();
+  renderLeads(myLeads);
+}
+
+function renderLeads(leads) {
+  let listItems = "";
+
+  for (let i = 0; i < leads.length; i++) {
+    listItems += `
+      <li>    
+            <a href="${leads}" target="_blank"> 
+               ${leads[i]}  
+            </a> 
+      </li>`;
+  }
+
+  leadsEl.innerHTML = listItems;
 }
 
 inputBtn.addEventListener("click", function () {
@@ -17,26 +33,18 @@ inputBtn.addEventListener("click", function () {
   console.log(myLeads);
   localStorage.setItem("myLeads", JSON.stringify(myLeads));
 
-  renderLeads();
+  renderLeads(myLeads);
 });
-
-function renderLeads() {
-  let listItems = "";
-
-  for (let i = 0; i < myLeads.length; i++) {
-    listItems += `
-      <li>    
-            <a href="${myLeads}" target="_blank"> 
-               ${myLeads[i]}  
-            </a> 
-      </li>`;
-  }
-
-  leadsEl.innerHTML = listItems;
-}
 
 clearBtn.addEventListener("click", function () {
   localStorage.clear();
   myLeads = [];
-  renderLeads();
+  renderLeads(myLeads);
+});
+
+tabBtn.addEventListener("click", function () {
+  tab = "hai";
+  myLeads.push(tab);
+  renderLeads(myLeads);
+  ``;
 });

@@ -15,7 +15,7 @@ h1 {
   color: #ff4444;
 }
 
-div {
+.main-div {
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -88,4 +88,11 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.btn-div {
+  flex-direction: row;
+  gap: 10%;
+  box-shadow: none;
+  background-color: none;
 }
