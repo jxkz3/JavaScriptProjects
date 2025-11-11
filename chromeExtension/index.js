@@ -4,7 +4,6 @@ const inputBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const clearBtn = document.getElementById("clear-btn");
 const tabBtn = document.getElementById("tab-btn");
-
 let leadsLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 if (leadsLocalStorage) {
@@ -18,7 +17,7 @@ function renderLeads(leads) {
   for (let i = 0; i < leads.length; i++) {
     listItems += `
       <li>    
-            <a href="${leads}" target="_blank"> 
+            <a href="${leads[i]}" target="_blank"> 
                ${leads[i]}  
             </a> 
       </li>`;
@@ -30,7 +29,6 @@ function renderLeads(leads) {
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   inputEl.value = "";
-  console.log(myLeads);
   localStorage.setItem("myLeads", JSON.stringify(myLeads));
 
   renderLeads(myLeads);
@@ -43,8 +41,11 @@ clearBtn.addEventListener("click", function () {
 });
 
 tabBtn.addEventListener("click", function () {
-  tab = "hai";
-  myLeads.push(tab);
-  renderLeads(myLeads);
-  ``;
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    let currentUrl = tabs[0].url;
+    myLeads.push(currentUrl);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+
+    renderLeads(myLeads);
+  });
 });
