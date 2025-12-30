@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+}
+
+div {
+  text-align: center;
+}
+
+#randomLabel {
+  display: block;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+#rollBtn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+}
+
+#rollBtn:hover {
+  background: #444;
+}
+
+#rollBtn:active {
+  transform: scale(0.97);
+}
