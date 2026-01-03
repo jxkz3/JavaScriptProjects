@@ -339,3 +339,113 @@ function test() {
 test();
 // console.log(localVar); // error
 ```
+
+## Array
+
+An array is a collection of multiple values stored in a single variable.
+Each value is accessed using an index.
+
+```js
+let fruits = ["apple", "orange"];
+// navigate
+frutis[1]; // oranage
+
+// add item in array last
+fruits.push("grape"); // ["apple", "orange", "grape"]
+
+// remove last element
+fruits.pop(); //["apple", "orange"]
+
+// remove first elemenr
+fruits.shift(); // ["orange"]
+
+// add item in the begining
+fruits.unshift("apple"); //["apple", "orange"]
+
+// to know length of array
+fruits.length; // 2
+
+// index number of specfic item
+fruits.indexOf("apple"); // 0
+fruits.indexOf("pineapple"); // -1
+
+// to list all items in array
+
+for (let i = 0; i < fruits.lenth; i++) {
+  console.log(fruits[i]);
+}
+
+// shoter way
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+
+// Array sort based
+fruits.sort(); // alphbatical
+fruits.sort().reverse(); // reverse alphabatical
+```
+
+### spread operator
+
+allow an iterable such as array or string to be expand into seprate elements (more like unpack the elements)
+
+```js
+let number = [1, 2, 3, 5, 6, 9];
+let biggestNumebr = Math.max(number); // NaN
+let biggestNumebr = Math.max(...number); // 9 ()
+
+userName = "sponge";
+let letters = [...userName]; // ["s","p","o","n","g","e "]
+let letters = [...userName].join("-"); // s-p-o-n-g-e
+```
+
+combaining multiple array
+
+```js
+let fruits = ["apple", "orange"];
+let veg = ["tomato", "potato"];
+
+let food = [...fruits, ...veg]; // ["apple", "orange", "tomato", "potato"]
+food = [...fruits, ...veg, "egg"]; // ["apple", "orange", "tomato", "potato", "egg"]
+```
+
+### rest operator
+
+it exactly like oposite of spread operator
+bundle seprate elements into bundle
+
+example
+
+```js
+function getFoods(...foods) {
+  return foods;
+}
+
+function openFoods(...foodA) {
+  return [...foodA].join(" ").replaceAll(" ", "-");
+}
+
+const food1 = "apple";
+const food2 = "berry";
+const food3 = "orange";
+const food4 = "pine";
+const food5 = "avcoda";
+
+console.log(getFoods(food1, food2, food3, food5));
+console.log(openFoods(food1, food2, food3, food5));
+```
+
+exampple two
+
+```js
+function sum(...numbers) {
+  let results = 0;
+  for (let numb of numbers) {
+    results += numb;
+  }
+  return results;
+}
+
+let total = sum(1, 3, 4);
+console.log(`sum of all these number is ${total}`);
+```
