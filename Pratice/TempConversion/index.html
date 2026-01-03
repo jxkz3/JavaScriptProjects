@@ -7,7 +7,25 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div></div>
+    <div class="main-div">
+      <form>
+        <h1>Temperature Converter</h1>
+        <input type="number" id="inputNumber" placeholder="Enter temperature" />
+        <label>
+          <input type="radio" id="toC" name="ftoc" />
+          Convert Fahrenheit to Celsius
+        </label>
+
+        <label>
+          <input type="radio" id="toF" name="ftoc" />
+          Convert Celsius to Fahrenheit
+        </label>
+
+        <button type="button" onclick="convert()">Convert</button>
+
+        <p id="result"></p>
+      </form>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
