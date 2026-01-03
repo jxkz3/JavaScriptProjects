@@ -297,3 +297,45 @@ continue
 
 - Skips the current iteration
 - Moves to the next loop cycle
+
+### Function
+
+A function is a block of reusable code.
+Once a function is declared, it can be called multiple times to execute the same logic.
+
+Example:
+
+```js
+function greet() {
+  console.log("Hello");
+}
+
+greet();
+greet();
+```
+
+### Variable Scope
+
+Variable scope defines where a variable is accessible in the code.
+
+- Global scope:
+  A variable declared outside any function.
+  It can be accessed anywhere in the program.
+
+- Local scope:
+  A variable declared inside a function or block.
+  It can only be accessed within that function or block.
+
+Example:
+
+```js
+let globalVar = "I am global";
+
+function test() {
+  let localVar = "I am local";
+  console.log(globalVar); // works
+}
+
+test();
+// console.log(localVar); // error
+```

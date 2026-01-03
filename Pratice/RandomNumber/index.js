@@ -10,13 +10,3 @@ rollButton.onclick = function () {
 
   randomNumber.textContent = number;
 };
-
-// no method chainning
-
-let userName = window.prompt("enter your username");
-userName = userName.replaceAll(" ", "");
-
-userName =
-  userName.charAt(0).toUpperCase() + userName.slice(1).toLocaleLowerCase();
-
-console.log(userName);
