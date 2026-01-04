@@ -69,3 +69,9 @@ body {
   border-radius: 4px;
   word-break: break-all;
 }
+
+#warning {
+  text-align: center;
+  font-size: small;
+  color: red;
+}

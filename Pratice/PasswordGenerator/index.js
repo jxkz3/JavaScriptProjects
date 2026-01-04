@@ -4,6 +4,7 @@ const includeSpecial = document.getElementById("includeSpecial");
 const includeNumber = document.getElementById("includeNumber");
 const totalLength = document.getElementById("totalLength");
 const generatedResult = document.getElementById("generatedResult");
+const warningMessage = document.getElementById("warning");
 
 function generatePassword() {
   const capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,11 +20,14 @@ function generatePassword() {
   whatInclude += includeSpecial.checked ? specialChars : "";
   whatInclude += includeNumber.checked ? numbers : "";
 
-  console.log(whatInclude);
-
-  for (let i = 0; i < lengthOfPassword; i++) {
-    let randomIndex = Math.floor(Math.random() * whatInclude.length);
-    password += whatInclude[randomIndex];
+  if (whatInclude.length > 0) {
+    for (let i = 0; i < lengthOfPassword; i++) {
+      let randomIndex = Math.floor(Math.random() * whatInclude.length);
+      password += whatInclude[randomIndex];
+    }
+    generatedResult.textContent = password;
+    warningMessage.textContent = ``;
+  } else {
+    warningMessage.textContent = "Please select at least one option";
   }
-  generatedResult.textContent = password;
 }
