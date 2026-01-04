@@ -20,14 +20,19 @@ function generatePassword() {
   whatInclude += includeSpecial.checked ? specialChars : "";
   whatInclude += includeNumber.checked ? numbers : "";
 
-  if (whatInclude.length > 0) {
-    for (let i = 0; i < lengthOfPassword; i++) {
-      let randomIndex = Math.floor(Math.random() * whatInclude.length);
-      password += whatInclude[randomIndex];
-    }
-    generatedResult.textContent = password;
-    warningMessage.textContent = ``;
-  } else {
-    warningMessage.textContent = "Please select at least one option";
+  if (lengthOfPassword < 5 || Number.isNaN(lengthOfPassword)) {
+    warningMessage.textContent = "Password length must be greater than 4";
+    return;
   }
+  if (whatInclude <= 0) {
+    warningMessage.textContent = "Please select at least one option";
+    return;
+  }
+
+  for (let i = 0; i < lengthOfPassword; i++) {
+    let randomIndex = Math.floor(Math.random() * whatInclude.length);
+    password += whatInclude[randomIndex];
+  }
+  generatedResult.textContent = password;
+  warningMessage.textContent = "";
 }
