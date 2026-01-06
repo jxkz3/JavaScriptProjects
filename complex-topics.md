@@ -130,6 +130,8 @@ function isOdd(elements) {
 
 The `reduce()` method reduce the elements in array to single value
 
+normal reduce had 2 arguments compare to others
+
 ```js
 const lotteryNumber = [12321, 4234, 4564, 56, 786, 3123, 546, 123, 6767, 12312];
 
@@ -204,4 +206,136 @@ const hello = function()[
 ]
 
 
+```
+
+### arrow function
+
+arrow function is strict and shoter way to write a function in javaScript that does not create its own this , and making behvaiour more predicatble
+
+```js
+const guessNumber = [123, 343, 5464, 3213, 14, 56, 76];
+// function declartaion
+
+const squareResult = guessNumber.map(squares);
+console.log(squareResult);
+
+function squares(e) {
+  return Math.pow(e, 2);
+}
+
+// function expression
+
+// function expression
+
+const squareResult = guessNumber.map(function (e) {
+  return Math.pow(e, 2);
+});
+console.log(squareResult);
+
+// arrow function
+const squareResult = guessNumber.map((e) => Math.pow(e, 2));
+console.log(squareResult);
+```
+
+different secenerio
+
+```js
+// function declare
+
+setTimeout(hello, 3000);
+
+function hello() {
+  console.log("hello now i am 4 second passed");
+}
+
+// function expression
+
+setTimeout(function () {
+  console.log("again waiting now 3 second passed");
+}, 5000);
+
+// arrow function
+setTimeout(
+  () => console.log("now using 6 second for checking arrow function"),
+  6000
+);
+```
+
+## Objects oreinted Programing
+
+### Objects
+
+Object in javaScript is collection of relational data and function stored as key value pair
+
+Object in JavaScript: a collection of key–value pairs used to group related data and behavior into a single unit.
+
+Small note:
+An object can store properties (data) and methods (functions). Methods let the object act on its own data using this.
+
+```js
+const user = {
+  name: "Alex",
+  age: 22,
+  greet: function () {
+    return `Hi, I am ${this.name} and I am ${this.age} years old`;
+  },
+};
+
+user.greet(); // "Hi, I am Alex and I am 22 years old"
+```
+
+### `.this` method
+
+this in JavaScript refers to the object that is calling the function.
+
+this in JavaScript is a reference to the objkect where this is used
+
+this in JavaScript: a keyword that points to the object that is executing the current function.
+this is decided at runtime, based on how a function is called, not where it is written.
+
+```js
+const user = {
+  name: "spongebob",
+  showName: function () {
+    return this.name;
+  },
+};
+
+user.showName(); // "SpongeBob"
+
+// mistake or trap
+
+const user = {
+  name: "patrick",
+  showName: () => {
+    return this.name;
+  },
+};
+
+user.showName(); // "undefined"
+```
+
+### Construters
+
+A constructor function is a regular javaScript function used with new keyword to create mutliple object in same structore
+A constructor function is just a function used to create objects.
+
+```js
+function Bike(company, year, color) {
+  (this.company = company),
+    (this.year = year),
+    (this.color = color),
+    (this.motto = function () {
+      console.log(
+        `The ${this.company} is the best brand in ${this.year} you must choose ${this.color}`
+      );
+    });
+}
+
+const bikeOne = new Bike("bmw", 1992, "black");
+const bikeTwo = new Bike("porsche", 1922, "red");
+
+console.log(bikeOne.color); // black
+bikeOne.motto();
+bikeTwo.motto(); //The porsche is the best brand in 1922 you must choose red
 ```

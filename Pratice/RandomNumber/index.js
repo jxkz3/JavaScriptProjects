@@ -11,25 +11,20 @@ rollButton.onclick = function () {
   randomNumber.textContent = number;
 };
 
-const lotteryNumber = [12321, 4234, 4564, 56, 786, 3123, 546, 123, 6767, 12312];
-
-const smallestNumber = lotteryNumber.reduce(minNumber, Infinity);
-console.log(smallestNumber);
-
-const biggestNumber = lotteryNumber.reduce(maxNumber, -Infinity);
-console.log(biggestNumber);
-
-const sumLottery = lotteryNumber.reduce(sum, 0);
-console.log(sumLottery);
-
-function minNumber(accumulator, nextElement) {
-  return Math.min(accumulator, nextElement);
+function Bike(company, year, color) {
+  (this.company = company),
+    (this.year = year),
+    (this.color = color),
+    (this.motto = function () {
+      console.log(
+        `The ${this.company} is the best brand in ${this.year} you must choose ${this.color}`
+      );
+    });
 }
 
-function maxNumber(a, n) {
-  return Math.max(a, n);
-}
+const bikeOne = new Bike("bmw", 1992, "black");
+const bikeTwo = new Bike("porsche", 1922, "red");
 
-function sum(prev, nex) {
-  return prev + nex;
-}
+console.log(bikeOne.color); // black
+bikeOne.motto();
+bikeTwo.motto();

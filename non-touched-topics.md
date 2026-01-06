@@ -81,7 +81,7 @@
     - localStorage / sessionStorage
     - IndexedDB
 
-14. Security Fundamentals (non-negotiable)
+14. Security Fundamentals (non-negotiable) // already know
 
     - XSS
     - CSRF
