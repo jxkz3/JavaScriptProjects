@@ -10,21 +10,3 @@ rollButton.onclick = function () {
 
   randomNumber.textContent = number;
 };
-
-function Bike(company, year, color) {
-  (this.company = company),
-    (this.year = year),
-    (this.color = color),
-    (this.motto = function () {
-      console.log(
-        `The ${this.company} is the best brand in ${this.year} you must choose ${this.color}`
-      );
-    });
-}
-
-const bikeOne = new Bike("bmw", 1992, "black");
-const bikeTwo = new Bike("porsche", 1922, "red");
-
-console.log(bikeOne.color); // black
-bikeOne.motto();
-bikeTwo.motto();
