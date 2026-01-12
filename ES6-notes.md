@@ -33,3 +33,40 @@ console.log(car1.price, car1.name); // 122200 'bmw'
 ### Static class
 
 static is key that defines property or method that belond to the class itself rather than object that created from class
+
+class own anything static not object
+
+```js
+class User {
+  static userCount = 0;
+  constructor(name, age, degree) {
+    this.name = name;
+    this.age = age;
+    this.degree = degree;
+    User.userCount++;
+  }
+
+  static getCount() {
+    console.log(this.userCount);
+  }
+  getDetails() {
+    console.log(
+      `I am ${this.name} and ${this.age} years old. I completed my ${this.degree} in Unversity.`
+    );
+  }
+}
+
+const user1 = new User("Rose", 23, "BSC");
+const user2 = new User("Tommy", 22, "BCA");
+const user3 = new User("Arthur", 25, "MCA");
+
+user1.getDetails(); //I am Rose and 23 years old. I completed my BSC in Unversity
+user2.getDetails();
+user3.getDetails();
+
+User.getCount(); //3
+```
+
+### Inheritence class
+
+inheritence is javascript is more like a new class is inherit property and method from existing class (parent -> child) help with code reusabltiy
