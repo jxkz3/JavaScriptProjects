@@ -449,3 +449,75 @@ function sum(...numbers) {
 let total = sum(1, 3, 4);
 console.log(`sum of all these number is ${total}`);
 ```
+
+### Destructring
+
+Destructring is extracting values from array and object and asign them into variables in convenient ways
+{} = to perform object destructuring
+[] = to perform array destructuring
+examples
+
+```js
+// when we want swap value of two vaaraibles
+const a = 1;
+const b = 2;
+
+[a, b] = [b, a];
+
+// swap 2 elemets from a array
+
+const fruits = ["apple", "grape", "orange", "pin apple", "watermelon"];
+
+[fruits[0], fruits[3]] = [fruits[3], fruits[0]];
+
+// Assign  array elements to varaibles
+const fruits = ["apple", "grape", "orange", "pin apple", "watermelon"];
+
+const [firstFruit, secondFruit, ...otherFruits] = fruits;
+
+// Extract values from object
+
+const person1 = {
+  firstName: "sponge",
+  secondName: "bob",
+  age: 32,
+};
+
+const person2 = {
+  firstName: "patric",
+  secondName: "jon",
+  age: 12,
+};
+
+const { firstName, secondName, age } = person2;
+
+console.log(firstName);
+console.log(secondName);
+console.log(age); // 12
+
+// Destructure in function parameters
+
+function displayPerson({ firstName, secondName, age, job = "unemployed" }) {
+  console.log(` ${firstName} ${secondName} he is ${age} years old ${job}`);
+}
+
+const person1 = {
+  firstName: "sponge",
+  secondName: "bob",
+  age: 32,
+};
+
+const person2 = {
+  firstName: "patric",
+  secondName: "jon",
+  age: 12,
+  job: "cook",
+};
+
+displayPerson(person1); // sponge bob he is 32 years old unemployed
+displayPerson(person2); //  patric jon he is 12 years old cook
+```
+
+## Objects
+
+### Nested Objects
