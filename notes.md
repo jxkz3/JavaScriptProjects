@@ -521,3 +521,151 @@ displayPerson(person2); //  patric jon he is 12 years old cook
 ## Objects
 
 ### Nested Objects
+
+Object inside a other object . allows you repersent more complex data structure child object in enclosed parent object
+
+```js
+// Simple nexted Object
+const pet = {
+  animal: "dog",
+  name: "rocky",
+  age: 12,
+  food: ["bone", "meat"],
+  address: {
+    Owner: "Sponge bob",
+    street: "lc street",
+    county: "IN WaterLand",
+  },
+};
+
+console.log(pet.animal);
+console.log(pet.age);
+console.log(pet.food[1]); // Meat
+console.log(pet.address.Owner); //Sponge bob
+
+// nested Object inside Class
+class Pet {
+  constructor(name, age, ...address) {
+    this.name = name;
+    this.age = age;
+    this.address = new Address(...address);
+  }
+}
+
+class Address {
+  constructor(owner, street, country) {
+    this.owner = owner;
+    this.street = street;
+    this.country = country;
+  }
+}
+
+const dog = new Pet("rocky ", 12, "Patrick", "lc street", "IN waterLand");
+
+console.log(dog); //Pet {name: 'rocky ', age: 12, address: Address}
+console.log(dog.address.owner); // Patrick
+```
+
+### Array of Objects
+
+```js
+const fruits = [
+  { name: "apple", color: "red", calories: 52 },
+  { name: "bananas", color: "yellow", calories: 89 },
+  { name: "kiwi", color: "green", calories: 61 },
+  { name: "stawberry", color: "red", calories: 33 },
+];
+
+fruits.forEach((fruit) => console.log(fruit.calories)); // 52 , 89 , 61 , 33
+fruits.forEach((fruit) => console.log(fruit.color)); // red, yellow , green ,red
+
+// push && pop
+
+console.log(fruits.splice(1));
+// filter
+
+const redFruits = fruits.filter((fruit) => fruit.color === "red");
+
+console.log(redFruits); //a apple and stawberry objects
+
+// map method
+
+const caloriesArr = fruits.map((fruit) => fruit.calories);
+console.log(caloriesArr); // [52, 89, 61, 33]
+
+// reduce
+console.log(fruits[1].name);
+
+const maxFruit = fruits.reduce((max, fruit) =>
+  max.calories > fruit.calories ? max : fruit,
+);
+
+const minFruit = fruits.reduce((min, fruit) =>
+  min.calories < fruit.calories ? min : fruit,
+);
+
+console.log(maxFruit); // banana
+console.log(minFruit); // {name: 'stawberry', color: 'red', calories: 33}
+console.log(minFruit.calories); //  33
+```
+
+### Sorting
+
+sorting is method sort elements in array in place
+sorts elements in lexicographic order
+
+loxicographic order = ( alaphbet + numbers + symbols)
+
+```js
+// Numbers
+const oddNumbers = [7, 1, 5, 11, 17, 21, 9, 3];
+oddNumbers.sort();
+
+console.log(oddNumbers); //[1, 11, 17, 21, 3, 5, 7, 9]
+
+oddNumbers.sort((a, b) => a - b);
+
+console.log(oddNumbers); // [1, 3, 5, 7, 9, 11, 17, 21]
+
+oddNumbers.sort((a, b) => b - a);
+console.log(oddNumbers); //[21, 17, 11, 9, 7, 5, 3, 1]
+
+oddNumbers.sort((a, b) => a + b);
+console.log(oddNumbers); //[21, 17, 11, 9, 7, 5, 3, 1]
+
+// objects inside array sorting
+
+const peoples = [
+  { name: "sponge bob", age: 12, gpa: 4 },
+  { name: "patricK", age: 3, gpa: 2 },
+  { name: "sandy", age: 45, gpa: 1 },
+  { name: "rocky", age: 10, gpa: 5 },
+];
+
+peoples.sort((a, b) => a.age - b.age);
+console.log(peoples);
+// {name: 'patricK', age: 3, gpa: 2}
+// {name: 'rocky', age: 10, gpa: 5}
+// {name: 'sponge bob', age: 12, gpa: 4}
+// {name: 'sandy', age: 45, gpa: 1}
+
+peoples.sort((a, b) => b.age - a.age);
+
+console.log(peoples);
+// {name: 'sandy', age: 45, gpa: 1}
+// {name: 'sponge bob', age: 12, gpa: 4}
+// {name: 'rocky', age: 10, gpa: 5}
+// {name: 'patricK', age: 3, gpa: 2}
+peoples.sort((a, b) => a.name.localeCompare(b.name));
+
+console.log(peoples);
+
+// {name: 'patricK', age: 3, gpa: 2}
+// {name: 'rocky', age: 10, gpa: 5}
+// {name: 'sandy', age: 45, gpa: 1}
+// {name: 'sponge bob', age: 12, gpa: 4}
+```
+
+### Date Objects
+
+date object = object that contain values thats represnt of date and time these date object can be changed or formatted
